@@ -48,6 +48,11 @@ namespace ExpertPlus_Sample
             {3, "시간외종가"}, {4, "최유리지정가"}, {5, "최우선지정가"}
         };
 
+        private static readonly Dictionary<int, Dictionary<string, string>> ExchCCodeDic = new Dictionary<int, Dictionary<string, string>>
+        {
+            {0, new Dictionary<string, string>{{"USD", "0"}}}, {1, new Dictionary<string, string>{{"HKD", "3"}}}
+        };
+
         public YFRequestData yfData = new YFRequestData();        // 조회성 정보를 받기 위한 객체
         public YFRequestData yfUnderData = new YFRequestData();   // 종목시세를 받기 위한 객체
         public YFRequestData yfAccountData = new YFRequestData(); // 계좌 정보를 받기 위한 객체
@@ -119,10 +124,16 @@ namespace ExpertPlus_Sample
                 comboBox4.Items.Add(string.Format("{0} : {1}", i + 1, TROrderTypeDic[i]));
             }
 
+            for (int i = 0; i < ExchCCodeDic.Count; i++)
+            {
+                comboBox5.Items.Add(ExchCCodeDic[i].Keys.First());
+            }
+
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
             comboBox4.SelectedIndex = 0;
+            comboBox5.SelectedIndex = 0;
         }
 
         
@@ -524,12 +535,41 @@ namespace ExpertPlus_Sample
             yfData.RequestInit();
             yfData.SetData("Account", yfAccountData.AccountItem(comboBox3.SelectedIndex) as string);
             yfData.SetData("Password", textBox5.Text);
-            yfData.SetData("ExchCCode", "0");
+            yfData.SetData("ExchCCode", ExchCCodeDic[comboBox5.SelectedIndex][comboBox5.SelectedItem as string]);
             yfData.SetData("JbCode", "1");
             yfData.SetData("AplcExch", "0");
             yfData.SetData("FcrncyAmt", "0");
 
             yfData.RequestData("TO7001", 0);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string exCode = "";
+            string requestTrCode = "";
+            string selectedNationCode = ExchCCodeDic[comboBox5.SelectedIndex][comboBox5.SelectedItem as string];
+            if (selectedNationCode == "0")
+            {
+                exCode = "US";
+                requestTrCode = "TO6301";
+            }
+            else
+            {
+                exCode = "HK";
+                requestTrCode = "TO6101";
+            }
+            yfOrderData.RequestInit();
+            yfOrderData.SetData("Account", yfAccountData.AccountItem(comboBox3.SelectedIndex) as string);
+            yfOrderData.SetData("Password", textBox5.Text);
+            yfOrderData.SetData("ExCode", exCode);
+            yfOrderData.SetData("TrdType", "02");
+            yfOrderData.SetData("Code", textBox10.Text);
+            yfOrderData.SetData("OrderQty", System.Convert.ToSingle(numericUpDown1.Value));
+            yfOrderData.SetData("OrderPr", System.Convert.ToSingle(numericUpDown2.Value));
+            yfOrderData.SetData("OrderType", "2");
+            //yfOrderData.SetData("AplcExchR", textBox16.Text);
+
+            yfOrderData.RequestData(requestTrCode);
         }
 
         private void RealAccountRQ(bool futureYN)

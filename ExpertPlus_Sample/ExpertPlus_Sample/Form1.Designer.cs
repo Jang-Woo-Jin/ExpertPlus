@@ -58,6 +58,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -89,6 +90,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.textBox16 = new System.Windows.Forms.TextBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -394,6 +396,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button9);
             this.panel3.Controls.Add(this.textBox14);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.textBox13);
@@ -420,6 +423,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(348, 374);
             this.panel3.TabIndex = 18;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold);
+            this.button9.Location = new System.Drawing.Point(218, 77);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(121, 63);
+            this.button9.TabIndex = 36;
+            this.button9.Text = "해외주식매수";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // textBox14
             // 
@@ -553,12 +568,12 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold);
             this.button3.Location = new System.Drawing.Point(218, 8);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 133);
+            this.button3.Size = new System.Drawing.Size(121, 63);
             this.button3.TabIndex = 20;
-            this.button3.Text = "주식매수";
+            this.button3.Text = "국내주식매수";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -710,16 +725,26 @@
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(819, 11);
+            this.textBox16.Location = new System.Drawing.Point(870, 11);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(57, 21);
             this.textBox16.TabIndex = 27;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(814, 12);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(50, 20);
+            this.comboBox5.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1076, 578);
+            this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label23);
@@ -826,6 +851,8 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
 }
 
