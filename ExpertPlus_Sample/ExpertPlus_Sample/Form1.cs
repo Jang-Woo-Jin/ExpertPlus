@@ -50,7 +50,7 @@ namespace ExpertPlus_Sample
 
         private static readonly Dictionary<int, Dictionary<string, string>> ExchCCodeDic = new Dictionary<int, Dictionary<string, string>>
         {
-            {0, new Dictionary<string, string>{{"USD", "0"}}}, {1, new Dictionary<string, string>{{"HKD", "3"}}}
+            {0, new Dictionary<string, string>{{"USD", "0"}}}, {1, new Dictionary<string, string>{{"CNY", "8"}}}, {2, new Dictionary<string, string>{{"HKD", "3"}}}
         };
 
         public YFRequestData yfData = new YFRequestData();        // 조회성 정보를 받기 위한 객체
@@ -342,8 +342,11 @@ namespace ExpertPlus_Sample
 
             listboxscrolldown(listBox1);
             listboxscrolldown(listBox2);
+            if (TrCode == "RQ8003")
+            {
 
-            if (TrCode == "RQ2101") {
+            }
+            else if (TrCode == "RQ2101") {
                 yfValues.SetValueData(yfRealData.GetKorValueHeader("RQ2101"), Value);
 
                 fLast = System.Convert.ToSingle(yfValues.GetValue(4)) / 100;
@@ -553,6 +556,11 @@ namespace ExpertPlus_Sample
                 exCode = "US";
                 requestTrCode = "TO6301";
             }
+            else if (selectedNationCode == "8")
+            {
+                exCode = "CN";
+                requestTrCode = "TO6201";
+            }
             else
             {
                 exCode = "HK";
@@ -567,7 +575,7 @@ namespace ExpertPlus_Sample
             yfOrderData.SetData("OrderQty", System.Convert.ToSingle(numericUpDown1.Value));
             yfOrderData.SetData("OrderPr", System.Convert.ToSingle(numericUpDown2.Value));
             yfOrderData.SetData("OrderType", "2");
-            //yfOrderData.SetData("AplcExchR", textBox16.Text);
+            yfOrderData.SetData("AplcExchR", textBox16.Text);
 
             yfOrderData.RequestData(requestTrCode);
         }
