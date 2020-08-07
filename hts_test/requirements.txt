@@ -1,0 +1,7 @@
+Django==2.1.5
+django-rest-swagger==2.1.2
+djangorestframework==3.8.2
+pywin32==228
+django-celery-beat==1.1.1
+django-celery-results==1.0.1
+django-redis==4.10.0

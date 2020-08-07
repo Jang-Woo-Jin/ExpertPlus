@@ -342,8 +342,7 @@ namespace ExpertPlus_Sample
 
             listboxscrolldown(listBox1);
             listboxscrolldown(listBox2);
-            if (TrCode == "RQ8003")
-            {
+            if (TrCode == "RQ8003"){
 
             }
             else if (TrCode == "RQ2101") {
